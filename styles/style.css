@@ -1,50 +1,163 @@
+@font-face {
+  font-family: spongebob-display;
+  src: url("../fonts/spongebob-display.woff") format("woff"),
+    url("../fonts/spongebob-display.woff2") format("woff2");
+}
+@font-face {
+  font-family: pangramsans;
+  src: url("../fonts/pppangramsansrounded-regular.woff") format("woff"),
+    url("../fonts/pppangramsansrounded-regular.woff2") format("woff2");
+  font-weight: normal;
+}
+@font-face {
+  font-family: pangramsans;
+  src: url("../fonts/pppangramsansrounded-bold.woff") format("woff"),
+    url("../fonts/pppangramsansrounded-bold.woff2") format("woff2");
+  font-weight: bold;
+}
+
 /**************/
 /* CSS REMEDY */
 /**************/
 
 /* naar een idee van Jen Simmons */
-*, *::after, *::before {
-  box-sizing:border-box;  
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
 body {
-  margin:0;
+  margin: 0;
 }
 
 button:not([disabled]) {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 img {
-  max-width:100%;
+  max-width: 100%;
 }
-
-
-
-
 
 /*********************/
 /* CUSTOM PROPERTIES */
 /*********************/
 
 :root {
-  --color-headings:crimson
-  /* ... */
-
+  --color-headings: #000;
+  --type-headings: spongebob-display;
+  --type-body: pangramsans;
 }
 
+/********************/
+/* ALGEMEEN */
+/********************/
 
+body {
+  background-image: url("../images/blank-canvas.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
 
+section {
+  width: 30vw;
+  position: absolute;
+}
 
+section:first-child {
+  z-index: 1;
+  margin: 6vw 0vw 0vw 6vw;
+  width: 20vw;
+}
+
+body > section:last-of-type {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+body > section:last-of-type img {
+  place-items: center;
+  text-align: center;
+  width: 30vw;
+}
+
+div {
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  width: 25vw;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+div img:first-child {
+  order: 0;
+  position: absolute;
+}
+
+div img:last-child {
+  order: 1;
+  position: absolute;
+  transition: 1s cubic-bezier(0.7, -0.6, 0.8, 1.2);
+  /*cubic bezier online ontworpen: cubic-bezier.com */
+  transform-origin: 24% 60%;
+  /*Transform originin geleerd van MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin*/
+  cursor: pointer;
+  /*Info over cursor wijzigen op MDN gevonden: https://developer.mozilla.org/en-US/docs/Web/CSS/cursor*/
+}
+
+div img:last-child:hover {
+  transform: rotate(30deg);
+}
+
+article {
+  display: hidden;
+}
 
 /********************/
-/* ALGEMENE STYLING */
+/* TYPOGRAFIE */
 /********************/
 
 h1 {
-  color:var(--color-headings);
+  color: var(--color-headings);
+  font-family: var(--type-headings);
+  font-size: clamp(1rem, 2vw, 10rem);
+  margin-top: 0px;
+  font-weight: normal;
 }
 
-/* ... */
+h1:first-child {
+  font-family: var(--type-body);
+  font-size: clamp(1rem, 1.2vw, 2rem);
+  margin-bottom: 0.5rem;
+}
 
+h2 {
+  margin: 0;
+}
 
+h2,
+h3 {
+  color: var(--color-headings);
+  font-family: var(--type-body);
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 1.2vw, 2rem);
+}
+
+h3 {
+  color: var(--color-headings);
+  font-weight: bold;
+  text-transform: none;
+  margin-bottom: 0px;
+}
+
+p {
+  font-family: var(--type-body);
+  font-size: clamp(0.9rem, 1vw, 1.3rem);
+  margin-top: 0.2rem;
+}
