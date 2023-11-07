@@ -59,6 +59,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  overflow: hidden;
 }
 
 section {
@@ -82,7 +83,7 @@ body > section:last-of-type {
 body > section:last-of-type img {
   place-items: center;
   text-align: center;
-  width: 30vw;
+  width: 20vw;
 }
 
 div {
@@ -92,11 +93,17 @@ div {
   width: 25vw;
   display: flex;
   flex-direction: column-reverse;
+  aspect-ratio: 480/369.461;
+  transform-style: preserve-3d;
+  perspective: 100em;
 }
 
 div img:first-child {
   order: 0;
   position: absolute;
+  transform: rotateX(0.1deg) rotateY(0.1deg);
+  transform-origin: 23% 60%;
+  /*Het apart selecteren van de images is met hulp van Sanne gedaan*/
 }
 
 div img:last-child {
@@ -116,6 +123,21 @@ div img:last-child:hover {
 
 article {
   display: hidden;
+}
+
+body > img:last-of-type {
+  width: 10%;
+  order: 1;
+  float: right;
+  margin-right: 20vw;
+  margin-top: -50vh;
+  transition: 1s;
+  visibility: hidden;
+}
+
+.hook-animation {
+  margin-top: 0vh !important;
+  visibility: visible !important;
 }
 
 /********************/
