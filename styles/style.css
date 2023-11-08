@@ -122,16 +122,13 @@ div button {
    margin: 0;
 }
 
-div button:active {
-   opacity: 0.5;
-}
-
 div button img {
    display: block;
    height: 100%;
    width: 100%;
 }
 
+/* eerste button */
 div button:first-child {
    transform: rotateX(0.1deg) rotateY(0.1deg);
    transform-origin: 23% 60%;
@@ -139,9 +136,18 @@ div button:first-child {
    /*Het apart selecteren van de images is met hulp van Sanne gedaan*/
 }
 
+div button:first-child:focus-visible img {
+   content: url("../images/hand/machine-focus.svg");
+}
+
+/* tweede button */
 div button:last-child {
    cursor: pointer;
    /*Info over cursor wijzigen op MDN gevonden: https://developer.mozilla.org/en-US/docs/Web/CSS/cursor*/
+}
+
+div button:last-child:focus-visible img {
+   content: url("../images/hand/hand-focus.svg");
 }
 
 div button:last-child img {

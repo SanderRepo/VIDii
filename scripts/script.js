@@ -33,7 +33,7 @@ images[images.length - 1].addEventListener("click", () => {
 
 const image = document.getElementById("machine");
 const originalSrc = "images/hand/machine.svg";
-const newSrc = "images/hand/machine-active.svg";
+const newSrc = "images/hand/machine-pressed.svg";
 const changeDuration = 300;
 
 const selectHook = document.getElementById("hook");
