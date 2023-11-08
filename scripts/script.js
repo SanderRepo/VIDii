@@ -60,10 +60,5 @@ image.addEventListener("click", function () {
 var easterEggSound = document.getElementById("easter-egg-sound");
 
 selectHook.addEventListener("click", function () {
-   if (!easterEggSound.paused) {
-      easterEggSound.pause();
-      easterEggSound.currentTime = 0;
-   }
-
    easterEggSound.play();
 });

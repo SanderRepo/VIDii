@@ -3,12 +3,14 @@
    src: url("../fonts/spongebob-display.woff") format("woff"),
       url("../fonts/spongebob-display.woff2") format("woff2");
 }
+
 @font-face {
    font-family: pangramsans;
    src: url("../fonts/pppangramsansrounded-regular.woff") format("woff"),
       url("../fonts/pppangramsansrounded-regular.woff2") format("woff2");
    font-weight: normal;
 }
+
 @font-face {
    font-family: pangramsans;
    src: url("../fonts/pppangramsansrounded-bold.woff") format("woff"),
@@ -67,17 +69,16 @@ section {
    position: absolute;
 }
 
-section:first-child {
+main article {
    z-index: 1;
    margin: 6vw 0vw 0vw 6vw;
    width: 19vw;
+   position: absolute;
 }
 
-body main > section:last-of-type {
-   display: grid;
-   place-items: center;
-   width: 100vw;
-   height: 100vh;
+body main > img:first-of-type {
+   position: absolute;
+   width: 30vw;
 }
 
 body main > section:last-of-type img {
@@ -98,39 +99,60 @@ div {
    perspective: 100em;
 }
 
-div button:first-child img {
-   order: 0;
+div:first-of-type {
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 20vw;
+}
+
+div button {
    position: absolute;
+
+   appearance: none;
+   background: transparent;
+   border: none;
+   outline: none;
+
+   display: block;
+   height: 100%;
+   width: 100%;
+   /* background-color: rgba(0, 255, 0, 0.5); */
+   padding: 0;
+   margin: 0;
+}
+
+div button:active {
+   opacity: 0.5;
+}
+
+div button img {
+   display: block;
+   height: 100%;
+   width: 100%;
+}
+
+div button:first-child {
    transform: rotateX(0.1deg) rotateY(0.1deg);
    transform-origin: 23% 60%;
    cursor: help;
    /*Het apart selecteren van de images is met hulp van Sanne gedaan*/
 }
 
-div button:last-child img {
-   order: 1;
-   position: absolute;
-   transition: 1s cubic-bezier(0.7, -0.6, 0.8, 1.2);
-   /*cubic bezier online ontworpen: cubic-bezier.com */
-   transform-origin: 24% 60%;
-   /*Transform originin geleerd van MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin*/
+div button:last-child {
    cursor: pointer;
    /*Info over cursor wijzigen op MDN gevonden: https://developer.mozilla.org/en-US/docs/Web/CSS/cursor*/
 }
 
-div button:last-child img:hover {
-   transform: rotate(30deg);
+div button:last-child img {
+   transition: 1s cubic-bezier(0.7, -0.6, 0.8, 1.2);
+   /*cubic bezier online ontworpen: cubic-bezier.com */
+   transform-origin: 24% 60%;
+   /*Transform originin geleerd van MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin*/
 }
 
-div button {
-   background: transparent;
-   border: none;
-   outline: none;
-   display: block;
-   height: 0rem;
-   width: 0rem;
-   background-color: rgba(0, 255, 0, 0.5);
-   display: contents;
+div button:last-child img:hover {
+   rotate: 30deg;
 }
 
 article {
@@ -168,6 +190,11 @@ body main > img:last-of-type:hover {
 /********************/
 
 h1 {
+   visibility: hidden;
+   position: absolute;
+}
+
+h2 {
    color: var(--color-headings);
    font-family: var(--type-headings);
    font-size: clamp(1rem, 2vw, 10rem);
@@ -175,18 +202,18 @@ h1 {
    font-weight: normal;
 }
 
-h1:first-child {
+h2:first-child {
    font-family: var(--type-body);
    font-size: clamp(1rem, 1.2vw, 2rem);
    margin-bottom: 0.5rem;
 }
 
-h2 {
+h3 {
    margin: 0;
 }
 
-h2,
-h3 {
+h3,
+h4 {
    color: var(--color-headings);
    font-family: var(--type-body);
    font-weight: normal;
@@ -194,7 +221,7 @@ h3 {
    font-size: clamp(1rem, 1.2vw, 2rem);
 }
 
-h3 {
+h4 {
    color: var(--color-headings);
    font-weight: bold;
    text-transform: none;
