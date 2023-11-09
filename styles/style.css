@@ -18,6 +18,10 @@
    font-weight: bold;
 }
 
+/* Bron fonts: https://pangrampangram.com/products/pangram-sans-rounded
+               https://www.fontspace.com/spongeboy-font-f45426 
+*/
+
 /**************/
 /* CSS REMEDY */
 /**************/
@@ -46,7 +50,9 @@ img {
 /*********************/
 
 :root {
-   --color-headings: #000;
+   --color-headings: hsl(0, 0%, 0%);
+   --color-primary: hsl(44, 89%, 33%);
+   --color-primary-active: hsl(44, 100%, 24%);
    --type-headings: spongebob-display;
    --type-body: pangramsans;
 }
@@ -108,16 +114,13 @@ div:first-of-type {
 
 div button {
    position: absolute;
-
    appearance: none;
    background: transparent;
    border: none;
    outline: none;
-
    display: block;
    height: 100%;
    width: 100%;
-   /* background-color: rgba(0, 255, 0, 0.5); */
    padding: 0;
    margin: 0;
 }
@@ -149,6 +152,7 @@ div button:last-child {
 div button:last-child:focus-visible img {
    content: url("../images/hand/hand-focus.svg");
 }
+/* Bron informatie over focus: https://stackoverflow.com/questions/36771069/some-buttons-have-focus-style-applied-on-click */
 
 div button:last-child img {
    transition: 1s cubic-bezier(0.7, -0.6, 0.8, 1.2);
@@ -238,4 +242,15 @@ p {
    font-family: var(--type-body);
    font-size: clamp(0.9rem, 1vw, 1.3rem);
    margin-top: 0.2rem;
+}
+
+a {
+   color: var(--color-primary);
+   font-weight: bold;
+   transition: 0.4s;
+}
+
+a:hover,
+a:focus {
+   color: var(--color-primary-active);
 }

@@ -1,46 +1,44 @@
+// define variables – Hulp van Bahaa Salaymeh bij het verduidelijken van de code
 const articles = document.querySelectorAll("article");
-const images = document.getElementsByClassName("hand");
-const articleImage = document.getElementById("article-image");
+const face = document.querySelector("#face");
+const machineBtn = document.querySelector(".machine-btn");
+const machineLever = document.querySelector(".machine-lever");
+//
+const machineBtnImg = document.querySelector("#machine");
+const originalSrc = "./images/hand/machine.svg";
+const newSrc = "./images/hand/machine-pressed.svg";
+
+const selectHook = document.querySelector("#hook");
+const buttonSound = document.querySelector("#button-sound");
+
+var easterEggSound = document.querySelector("#easter-egg-sound");
+
+// count
 let currentIndex = 0;
 
-const imageSources = [
-   "images/gezichtsuitdrukkingen/gezichtsuitdrukking-1.png",
-   "images/gezichtsuitdrukkingen/gezichtsuitdrukking-2.png",
-   "images/gezichtsuitdrukkingen/gezichtsuitdrukking-3.png",
-   "images/gezichtsuitdrukkingen/gezichtsuitdrukking-4.png",
-   "images/gezichtsuitdrukkingen/gezichtsuitdrukking-5.png",
-   "images/gezichtsuitdrukkingen/gezichtsuitdrukking-6.png",
+// paths of faces
+const faceSources = [
+   "./images/gezichtsuitdrukkingen/gezichtsuitdrukking-1.png",
+   "./images/gezichtsuitdrukkingen/gezichtsuitdrukking-2.png",
+   "./images/gezichtsuitdrukkingen/gezichtsuitdrukking-3.png",
+   "./images/gezichtsuitdrukkingen/gezichtsuitdrukking-4.png",
+   "./images/gezichtsuitdrukkingen/gezichtsuitdrukking-5.png",
+   "./images/gezichtsuitdrukkingen/gezichtsuitdrukking-6.png",
 ];
 
+// hide articles except the first one
 for (let i = 1; i < articles.length; i++) {
    articles[i].style.display = "none";
 }
 
-images[images.length - 1].addEventListener("click", () => {
-   articles.forEach((article) => {
-      article.style.display = "none";
-   });
+// actions
+machineBtn.onclick = fall;
+machineLever.onclick = changeFaceAndArticle;
+selectHook.onclick = playEggSound;
 
-   currentIndex = (currentIndex + 1) % articles.length;
-   articles[currentIndex].style.display = "block";
-
-   articleImage.src = imageSources[currentIndex];
-});
-
-// De selector van de images is gemaakt met behulp van ChatGPT. Een gedeelte van de code begrijp ik zelf niet.
-
-// ----------------- //
-
-const image = document.getElementById("machine");
-const originalSrc = "images/hand/machine.svg";
-const newSrc = "images/hand/machine-pressed.svg";
-const changeDuration = 300;
-
-const selectHook = document.getElementById("hook");
-var buttonSound = document.getElementById("button-sound");
-
-image.addEventListener("click", function () {
-   image.src = newSrc;
+// functions
+function fall() {
+   machineBtnImg.src = newSrc;
 
    selectHook.classList.add("hook-animation");
 
@@ -49,16 +47,26 @@ image.addEventListener("click", function () {
    }, 3000);
 
    setTimeout(function () {
-      image.src = originalSrc;
-   }, changeDuration);
+      machineBtnImg.src = originalSrc;
+   }, 300);
 
+   // play sound
    buttonSound.play();
-});
+   // Bron informatie: https://stackoverflow.com/questions/18826147/javascript-audio-play-on-click
+}
 
-// ----------------- //
+function changeFaceAndArticle() {
+   articles.forEach((article) => {
+      article.style.display = "none";
+   });
 
-var easterEggSound = document.getElementById("easter-egg-sound");
+   currentIndex = (currentIndex + 1) % articles.length;
+   articles[currentIndex].style.display = "block";
 
-selectHook.addEventListener("click", function () {
+   face.src = faceSources[currentIndex];
+}
+// De selector van de images is gemaakt met behulp van ChatGPT. Een gedeelte van de code begrijp ik zelf niet.
+
+function playEggSound() {
    easterEggSound.play();
-});
+}
